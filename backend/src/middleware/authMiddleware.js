@@ -10,7 +10,7 @@ const protect = (req,res,next)=>{
             })
         }
 
-        const token = authheader.spilt(" ")[1];
+        const token = authheader.split(" ")[1];
         const decoded = jwt.verify(
             token,
             process.env.JWT_SECRET

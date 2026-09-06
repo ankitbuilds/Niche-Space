@@ -119,26 +119,25 @@ const loginUser = async(req,res)=>{
 
 const getcurrentUser = async(req,res)=>{
     try{
-        const user = await findById(req.user.userId).select(
-            "-password"
-        );
+        const user = await User.findById(req.user.userId).select("-password");
 
         if(!user){
             return res.status(404).json({
                 success: false,
-                message: "User does not exsts"
+                message: "User does not exist"
             })
         }
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             user,
         })
 
     }
     catch(error){
+        console.error("getCurrentUser Error:", error);
         return res.status(500).json({
             success: false,
-            message: "error",
+            message: "server error",
         })
 
     }
