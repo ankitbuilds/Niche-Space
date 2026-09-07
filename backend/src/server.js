@@ -15,7 +15,9 @@ app.use(express.json());
 
 // Routes
 const authRoutes = require("./routes/authRoutes");
+const spaceRoutes = require("./routes/spaceRoutes");
 app.use("/api/auth", authRoutes);
+app.use("/api/spaces", spaceRoutes);
 
 // Health check API
 app.get("/api/health", (req, res) => {
